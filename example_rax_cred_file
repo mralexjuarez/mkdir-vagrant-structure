@@ -1,0 +1,8 @@
+# Example Rackspace Cloud Config File
+rackspace:
+   user: rackspace_user_name
+   api_key: rackspace_api_key
+   #network: rackspace_network_id
+ssh:
+   public: /Path/to/public/key.pub
+   private: /Path/to/private/key

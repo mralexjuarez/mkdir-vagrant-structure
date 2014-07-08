@@ -1,4 +1,4 @@
-### Vagrant - Rackspace - Landscape ###
+### mkdir-vagrant-structure ###
 
 #### The Why ####
 

@@ -33,14 +33,14 @@ images_excluded = ['Windows','iPXE','Vyatta']
 image_hash = Hash.new()
 
 # Going through all of the images and only print those not on the exclude list
-image_list['images'].each { |image| 
+image_list['images'].each do |image| 
    print_image = true # Set the default to be true, if it matches an excluded image, it will be set to false
 
-   images_excluded.each { |exclude|
+   images_excluded.each do |exclude|
       if image['name'].include? exclude 
          print_image = false # Do not process this image
       end
-   }
+   end
 
    if print_image 
       dirname = image['name'].downcase.tr(" ","_").tr("(","").tr(")","") # Created the directory by replacing spaces with _ and removing parenthesis
@@ -58,4 +58,4 @@ image_list['images'].each { |image|
       # Write the Vagrantfile out in to the proper directory 
       File.open( dirname + '/Vagrantfile' , 'w') { |file| file.puts tmp_file.gsub(/--RS-FLAVOR--/, imagename ).gsub(/--RS-SERVER--/ , dirname) }
    end
-}
+end

@@ -12,7 +12,7 @@ Overall it should be easy enough to use this little script. It makes a small ass
 
 In short, this script goes through all of the images in the Rackspace Cloud, and creates a local directory and a Vagrantfile for each image. It excludes a few images such as the Windows ones.
 
-    # ruby ./build\_layout.rb
+    # ruby ./mkdir\_vagrant_structure.rb
     
     ./arch_2014.5_pvhvm:
     Vagrantfile

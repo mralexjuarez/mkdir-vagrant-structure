@@ -31,7 +31,7 @@ In short, this script goes through all of the images in the Rackspace Cloud, and
 
 1. Tested with Ruby 2.1.2 so far.
 2. I am not a Ruby programmer, so any suggestions on improving the script or proper formatting would be greatly appreciated.
-3. The Vagrantfile assuems the box has been added with the name "rscloud".  The box can be added via the following command.
+3. 3. The Vagrantfile assuems the box has been added with the name "rscloud".  The box can be added via the following command.
 
 
     vagrant box add rscloud https://github.com/mitchellh/vagrant-rackspace/raw/master/dummy.box

@@ -2,6 +2,7 @@
 rackspace:
    user: rackspace_user_name
    api_key: rackspace_api_key
+   region: ord
    #network: rackspace_network_id
 ssh:
    public: /Path/to/public/key.pub

@@ -5,6 +5,7 @@ require 'yaml'
 RS_CONFIG = YAML.load_file(ENV['HOME']+'/.rax_cred_file')
 RS_USER = RS_CONFIG['rackspace']['user']
 RS_KEY = RS_CONFIG['rackspace']['api_key']
+RS_REGION = RS_CONFIG['rackspace']['region']
 RS_NETWORK = RS_CONFIG['rackspace']['network']
 PUBLIC_KEY = RS_CONFIG['ssh']['public']
 PRIVATE_KEY = RS_CONFIG['ssh']['private']
@@ -24,7 +25,7 @@ Vagrant.configure("2") do |config|
             server.api_key = RS_KEY
             server.flavor = /1GB/
             server.image = /^--RS-FLAVOR--$/
-            server.rackspace_region = "ord"
+            server.rackspace_region = RS_REGION
             server.public_key_path = PUBLIC_KEY
             #server.network RS_NETWORK
         end

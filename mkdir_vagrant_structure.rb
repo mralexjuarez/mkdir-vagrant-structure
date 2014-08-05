@@ -16,6 +16,7 @@ require 'json' # Needed to parse through the Fog::compute response
 RS_CONFIG = YAML.load_file(ENV['HOME'] + '/.rax_cred_file') #Looks for a credential file in the user's home directory
 RS_USER = RS_CONFIG['rackspace']['user']
 RS_KEY = RS_CONFIG['rackspace']['api_key']
+RS_REGION = RS_CONFIG['rackspace']['region']
 RS_NETWORK = RS_CONFIG['rackspace']['network']
 #PUBLIC_KEY = RS_CONFIG['ssh']['public']
 #PRIVATE_KEY = RS_CONFIG['ssh']['private']
@@ -26,7 +27,7 @@ service = Fog::Compute.new({
    :rackspace_username => RS_USER,# Rackspace Username
    :rackspace_api_key  => RS_KEY, # Rackspace API Key
    :version            => 'v2', # Use Next Gen Cloud Servers
-   :rackspace_region   => 'ord',# Datacenter
+   :rackspace_region   => RS_REGION,# Datacenter
    :connection_options => {}
 })
 
@@ -53,9 +54,9 @@ image_list['images'].each do |image|
       imagename = image['name'].tr('(',".*").tr(')',".*") # Replace open/close parenthesis with . so the image name can be matched directly
 
       # Note: I could not for the life of me figure out how to get a "\(" or "\)" to be printed on the damn screen.
-      # I opted to just replace it with a . so that it maches any single characetr
-   
-      # Create the directories as needed 
+      # I opted to just replace it with a . so that it maches any single character
+
+      # Create the directories as needed
       system 'mkdir', '-p' , dirname
 
       # Read in the template file

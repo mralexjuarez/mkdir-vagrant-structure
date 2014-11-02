@@ -20,11 +20,11 @@ Vagrant.configure("2") do |config|
  
     config.vm.define "server" do |server|
         config.vm.provider :rackspace do |server|
-            server.server_name = "--RS-SERVER--"
+            server.server_name = "vagrant_--RS-SERVER--"
             server.username = RS_USER
             server.api_key = RS_KEY
-            server.flavor = /1GB/
-            server.image = /^--RS-FLAVOR--$/
+            server.flavor = /1 GB/
+            server.image = /^--RS-IMAGE--$/
             server.rackspace_region = RS_REGION
             server.public_key_path = PUBLIC_KEY
             #server.network RS_NETWORK

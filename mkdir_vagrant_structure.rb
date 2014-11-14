@@ -60,9 +60,9 @@ image_list['images'].each do |image|
       system 'mkdir', '-p' , dirname
 
       # Read in the template file
-      tmp_file = File.read('Vagrantfile.template')
+      tmp_file = File.read(File.expand_path('../Vagrantfile.template', __FILE__))
 
       # Write the Vagrantfile out in to the proper directory 
-      File.open( dirname + '/Vagrantfile' , 'w') { |file| file.puts tmp_file.gsub(/--RS-FLAVOR--/, imagename ).gsub(/--RS-SERVER--/ , dirname) }
+      File.open( dirname + '/Vagrantfile' , 'w') { |file| file.puts tmp_file.gsub(/--RS-IMAGE--/, imagename ).gsub(/--RS-SERVER--/ , dirname) }
    end
 end

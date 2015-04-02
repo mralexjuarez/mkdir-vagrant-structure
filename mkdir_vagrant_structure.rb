@@ -76,8 +76,9 @@ basedir = Dir.pwd
 
 Dir.foreach(basedir) do |dir|
    # Ignore current and parent directorires, and any that we just created, or symlinks
-   next if dir == '.' or dir == '..' or dirnames.include?(dir) or File.symlink?(dir)
+   next if dir == '.' or dir == '..' or dir == '.git' or dirnames.include?(dir) or File.symlink?(dir) or File.file?(dir)
 
+   print(dir)
    # cd into the vagrant machine directory and get it's status
    FileUtils.chdir dir
    csvoutput = CSV.parse `vagrant status --machine-readable 2>&1`

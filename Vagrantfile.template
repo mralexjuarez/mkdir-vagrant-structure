@@ -1,33 +1,20 @@
-# Template file to create a directory based landscape
-require 'yaml'
- 
-# Looking at a credentail file as opposed to having it in the config file
-RS_CONFIG = YAML.load_file(ENV['HOME']+'/.rax_cred_file')
-RS_USER = RS_CONFIG['rackspace']['user']
-RS_KEY = RS_CONFIG['rackspace']['api_key']
-RS_REGION = RS_CONFIG['rackspace']['region']
-RS_NETWORK = RS_CONFIG['rackspace']['network']
-PUBLIC_KEY = RS_CONFIG['ssh']['public']
-PRIVATE_KEY = RS_CONFIG['ssh']['private']
- 
 # Setting a shell variable to default to Rackspace as the provider
 ENV['VAGRANT_DEFAULT_PROVIDER'] = 'rackspace'
  
 Vagrant.configure("2") do |config|
     config.vm.box = "rscloud"
-    config.ssh.pty = true
-    config.ssh.private_key_path = PRIVATE_KEY
+    config.ssh.private_key_path =  ENV['MY_PRIVATE_KEY']
  
-    config.vm.define "server" do |server|
-        config.vm.provider :rackspace do |server|
-            server.server_name = "vagrant_--RS-SERVER--"
-            server.username = RS_USER
-            server.api_key = RS_KEY
-            server.flavor = /1 GB/
-            server.image = /^--RS-IMAGE--$/
-            server.rackspace_region = RS_REGION
-            server.public_key_path = PUBLIC_KEY
-            #server.network RS_NETWORK
+    config.vm.define :server do |server|
+        server.vm.provider :rackspace do |rs|
+            rs.server_name = "vagrant_--RS-SERVER--"
+            rs.username = ENV['RS_USERNAME']
+            rs.api_key = ENV['RS_API_KEY']
+            rs.flavor = /1 GB/
+            rs.image = /^--RS-IMAGE--$/
+            rs.rackspace_region =  ENV['RS_REGION']
+            rs.public_key_path = ENV['MY_PUBLIC_KEY'] 
+            #rs.network RS_NETWORK
         end
     end
 end

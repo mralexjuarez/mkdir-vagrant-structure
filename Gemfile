@@ -1,0 +1,5 @@
+source 'https://rubygems.org'
+gem 'rake'
+gem 'fog'
+gem 'json'
+gem 'fileutils'

@@ -10,21 +10,13 @@ rescue LoadError => fog_error
 end
 
 require 'csv'  # Needed to parse the vagrant --machine-readable output
-require 'yaml' # Needed to read in the configuration file
+#require 'yaml' # Needed to read in the configuration file
 require 'json' # Needed to parse through the Fog::compute response
 require 'fileutils' # Needed to be smarter about interacting with dirs
 
 # Setup Rackspace variables
-#RS_CONFIG = YAML.load_file(ENV['HOME'] + '/.rax_cred_file') #Looks for a credential file in the user's home directory
-#RS_USER = RS_CONFIG['rackspace']['user']
-#RS_KEY = RS_CONFIG['rackspace']['api_key']
-#RS_REGION = RS_CONFIG['rackspace']['region']
-#RS_NETWORK = RS_CONFIG['rackspace']['network']
-#PUBLIC_KEY = RS_CONFIG['ssh']['public']
-#PRIVATE_KEY = RS_CONFIG['ssh']['private']
-
-RS_USER = ENV['RS_USERNAME'] 
-RS_KEY = ENV['RS_API_KEY'] 
+RS_USER = ENV['RS_USER'] 
+RS_KEY = ENV['RS_KEY'] 
 RS_REGION = ENV['RS_REGION'] 
 RS_NETWORK = ENV['RS_NETWORK'] 
 

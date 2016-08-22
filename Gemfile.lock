@@ -140,6 +140,7 @@ GEM
     json (1.8.3)
     multi_json (1.12.1)
     nokogiri (1.5.11)
+    rake (11.2.2)
     rbvmomi (1.9.0)
       builder (~> 3.2)
       json (~> 1.8)
@@ -156,6 +157,7 @@ DEPENDENCIES
   fileutils
   fog
   json
+  rake
 
 BUNDLED WITH
    1.12.5

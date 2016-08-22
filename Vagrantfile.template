@@ -3,17 +3,17 @@ ENV['VAGRANT_DEFAULT_PROVIDER'] = 'rackspace'
  
 Vagrant.configure("2") do |config|
     config.vm.box = "rscloud"
-    config.ssh.private_key_path =  ENV['MY_PRIVATE_KEY']
+    config.ssh.private_key_path =  ENV['PRIVATE_KEY']
  
     config.vm.define :server do |server|
         server.vm.provider :rackspace do |rs|
             rs.server_name = "vagrant_--RS-SERVER--"
-            rs.username = ENV['RS_USERNAME']
-            rs.api_key = ENV['RS_API_KEY']
+            rs.username = ENV['RS_USER']
+            rs.api_key = ENV['RS_KEY']
             rs.flavor = /1 GB/
             rs.image = /^--RS-IMAGE--$/
             rs.rackspace_region =  ENV['RS_REGION']
-            rs.public_key_path = ENV['MY_PUBLIC_KEY'] 
+            rs.public_key_path = ENV['PUBLIC_KEY'] 
             #rs.network RS_NETWORK
         end
     end

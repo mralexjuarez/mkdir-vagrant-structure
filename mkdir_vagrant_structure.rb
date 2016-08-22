@@ -2,19 +2,12 @@
 # The goal is to make it easier to 'vagrant up' any particular image for testing.
 
 # Modules
-begin
-   require 'fog'  # Interact with the Rackspace Cloud
-rescue LoadError => fog_error 
-   raise fog_error.exception('Please install the Fog gem') if fog_error.message =~ /fog/
-   raise
-end
-
+require 'fog'  # Interact with the Rackspace Cloud
 require 'csv'  # Needed to parse the vagrant --machine-readable output
-#require 'yaml' # Needed to read in the configuration file
 require 'json' # Needed to parse through the Fog::compute response
 require 'fileutils' # Needed to be smarter about interacting with dirs
 
-# Setup Rackspace variables
+# Rackspace API variables are set as bash environment variables
 RS_USER = ENV['RS_USER'] 
 RS_KEY = ENV['RS_KEY'] 
 RS_REGION = ENV['RS_REGION'] 

@@ -28,7 +28,7 @@ response = service.list_images
 image_list = response.body
 
 # Setup the list of excludes
-images_excluded = ['Windows','iPXE','Vyatta']
+images_excluded = ['Windows','iPXE','Vyatta','OnMetal']
 image_hash = Hash.new()
 dirnames = Array.new()
 
@@ -68,7 +68,7 @@ Dir.foreach(basedir) do |dir|
    # Ignore current and parent directorires, and any that we just created, or symlinks
    next if dir == '.' or dir == '..' or dir == '.git' or dirnames.include?(dir) or File.symlink?(dir) or File.file?(dir)
 
-   print(dir)
+   puts(dir)
    # cd into the vagrant machine directory and get it's status
    FileUtils.chdir dir
    csvoutput = CSV.parse `vagrant status --machine-readable 2>&1`
